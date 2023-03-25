@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULO DO IMC - EDU</title>
+</head>
+
+<body>
+
+    <h1>Calculadora de IMC</h1>
+
+    <p>Preencha os campos abaixo para calcular seu IMC:</p>
+
+    <form>
+
+        <label for="altura">Altura (metros):</label>
+        <input type="number" id="altura" step="0.01" required><br><br>
+        <label for="peso">Peso (Kilogramas):</label>
+        <input type="number" id="peso" required><br><br>
+        <button type="button" onclick="calcularIMC()">Calcular</button>
+
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+
+        function calcularIMC() {
+            // Obter os valores de altura e peso do formulário
+            var altura = document.getElementById("altura").value;
+            var peso = document.getElementById("peso").value;
+
+            // Calcular o IMC
+            var imc = peso / (altura * altura);
+
+            // Arredondar o resultado para duas casas decimais
+            imc = imc.toFixed(2);
+
+            // Exibir o resultado na tela
+            var resultadoElement = document.getElementById("resultado");
+            resultadoElement.innerHTML = "Seu IMC é: " + imc + "<br>";
+
+            if (imc < 18.5) {
+                resultadoElement.innerHTML += "Você está abaixo do peso.";
+            }
+
+            else if (imc < 25) {
+                resultadoElement.innerHTML += "Seu peso está saudável.";
+            }
+
+            else if (imc < 30) {
+                resultadoElement.innerHTML += "Você está com sobrepeso.";
+            }
+
+            else {
+                resultadoElement.innerHTML += "Você está obeso.";
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
